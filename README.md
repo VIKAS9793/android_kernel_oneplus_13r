@@ -1,81 +1,115 @@
 # OnePlus 13R Kernel Source
 
-This repository contains the kernel source for the OnePlus 13R (kalama).
+This repository contains the kernel source code for the OnePlus 13R, optimized for LineageOS compatibility.
 
-## Device Specifications
+## Device Information
 
-| Feature                 | Specification                                                                                                                                                                                      |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CPU                     | Qualcomm® Kryo™ 980 CPU @3.3GHz                                                                                                                                                                    |
-| Chipset                 | Snapdragon® 8 Gen 3 Mobile Platform                                                                                                                                                                |
-| GPU                     | Adreno™ 750 @903MHz                                                                                                                                                                                |
-| Memory                  | 12GB/16GB LPDDR5X                                                                                                                                                                                  |
-| Shipped Android Version | OxygenOS 15.0 based on Android™ 15                                                                                                                                                                 |
-| Storage                 | 256GB/512GB UFS 4.0                                                                                                                                                                                |
-| Battery                 | 6,000 mAh (single-cell, non-removable)                                                                                                                                                             |
-| Display                 | 17.22 cm (6.78 inches), 2780×1264 pixels, 450 ppi, 120Hz ProXDR Display with LTPO 4.1, HBM/Peak Brightness: 1600 nits/4500 nits, 100% Display P3, 10-bit Color Depth, Corning® Gorilla® Glass GG7i |
-| Camera (Rear)           | 50 MP (wide), Sony LYT-700, 1/1.56", f/1.8, OIS, 50 MP (telephoto), 2X optical zoom, f/2.0, 8 MP (ultrawide), f/2.2, 112° FOV                                                                      |
-| Camera (Front)          | 16 MP (wide), 1/3.09", f/2.4, 82° FOV                                                                                                                                                              |
-| Charging                | 80W SUPERVOOC™                                                                                                                                                                                     |
+- **Device**: OnePlus 13R
+- **Manufacturer**: OnePlus
+- **Chipset**: Qualcomm Snapdragon 8 Gen 2
+- **Android Version**: 15.0.0.0
+- **Kernel Version**: 5.15.x
 
-## Building the Kernel
+## Features
 
-1. Set up the build environment:
-```bash
-source build/envsetup.sh
-lunch lineage_13r-userdebug
-```
-
-2. Build the kernel:
-```bash
-make kernel
-```
-
-3. Build kernel modules:
-```bash
-make modules
-```
-
-4. Install kernel headers:
-```bash
-make headers
-```
-
-## Kernel Features
-
-- Based on Linux 5.15
-- Built with Clang 16.0.1
-- Supports Android 15
-- Includes Qualcomm Snapdragon 8 Gen 3 optimizations
-- Supports dynamic CPU frequency scaling
-- Includes power management optimizations
-- Supports display and camera features
-- Includes security enhancements
+- Optimized for LineageOS compatibility
+- Enhanced audio configuration
+- Improved power management
+- USB-C audio support
+- Moisture protection
+- Multiple audio codec support (WCD938x, WSA883x)
+- Proper sleep state handling
+- Enhanced microphone and speaker configurations
 
 ## Directory Structure
 
 ```
 android_kernel_oneplus_13r/
-├── arch/arm64/configs/vendor/kalama_defconfig
+├── arch/
+│   └── arm64/
+│       ├── boot/
+│       │   └── dts/
+│       │       └── qcom/
+│       │           ├── kalama-oneplus-13r-audio.dtsi
+│       │           ├── kalama-oneplus-13r-audio-platform.dtsi
+│       │           ├── kalama-oneplus-13r-audio-pinctrl.dtsi
+│       │           ├── kalama-oneplus-13r-pinctrl.dtsi
+│       │           └── kalama-oneplus-13r.dts
+│       └── configs/
+│           └── vendor/
+│               └── kalama_defconfig
+├── drivers/
+│   └── oneplus/
+│       └── 13r/
+│           ├── Kconfig
+│           └── Makefile
 ├── Android.mk
-├── build_kernel.mk
 └── README.md
 ```
 
-## Dependencies
+## Building Instructions
 
-- Android NDK
-- Clang 16.0.1
-- LLVM tools
-- Qualcomm Snapdragon 8 Gen 3 BSP
+1. Set up the build environment:
+```bash
+export ARCH=arm64
+export SUBARCH=arm64
+export CROSS_COMPILE=aarch64-linux-gnu-
+```
+
+2. Configure the kernel:
+```bash
+make kalama_defconfig
+```
+
+3. Build the kernel:
+```bash
+make -j$(nproc)
+```
+
+## Audio Configuration
+
+The kernel includes comprehensive audio configurations:
+
+- **Main Audio Configuration**: `kalama-oneplus-13r-audio.dtsi`
+  - Audio routing configurations
+  - Microphone and speaker settings
+  - PDM inputs support
+  - ADC configurations
+  - WCD features
+
+- **Audio Platform**: `kalama-oneplus-13r-audio-platform.dtsi`
+  - MI2S slave and external MCLK configurations
+  - Pin control for active/sleep states
+  - Device-specific configurations
+
+- **Audio Pin Control**: `kalama-oneplus-13r-audio-pinctrl.dtsi`
+  - I/O configurations
+  - Power management
+  - Drive strength and bias settings
 
 ## Contributing
 
-1. Fork this repository
-2. Create a new branch for your changes
-3. Make your changes
-4. Submit a pull request
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
 
-This project is licensed under the GPL-2.0 License - see the LICENSE file for details. 
+This project is licensed under the GNU General Public License v2.0 - see the LICENSE file for details.
+
+## Credits
+
+- LineageOS Team
+- OnePlus
+- Qualcomm
+- The Android Open Source Project
+
+## Support
+
+For support, please open an issue in this repository or contact the maintainers.
+
+## Disclaimer
+
+This kernel is provided as-is, with no warranties. Use at your own risk. 
