@@ -12,7 +12,7 @@ This repository contains the kernel source code for the OnePlus 13R, optimized f
 - **Memory**: 12GB/16GB LPDDR5X
 - **Storage**: 256GB/512GB UFS 4.0
 - **Android Version**: 15.0.0.0 (OxygenOS 15.0)
-- **Kernel Version**: 6.1.74 (Based on latest Linux 6.1 LTS)
+- **Kernel Version**: 6.1.75 (Based on latest Linux 6.1 LTS)
 - **Display**: 6.78" 2780×1264 pixels, 120Hz LTPO 4.1
 - **Battery**: 6,000 mAh with 80W SUPERVOOC™
 - **Cameras**: 
