@@ -1,0 +1,138 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (c) 2024, The Linux Foundation. All rights reserved.
+ */
+
+/dts-v1/;
+
+#include "kalama.dtsi"
+#include "kalama-mtp.dtsi"
+#include "kalama-oneplus-13r-pinctrl.dtsi"
+#include "kalama-oneplus-13r-audio.dtsi"
+#include "kalama-oneplus-13r-camera.dtsi"
+#include "kalama-oneplus-13r-display.dtsi"
+#include "kalama-oneplus-13r-battery.dtsi"
+#include "kalama-oneplus-13r-charger.dtsi"
+#include "kalama-oneplus-13r-sensors.dtsi"
+#include "kalama-oneplus-13r-nfc.dtsi"
+
+/ {
+    model = "OnePlus 13R";
+    compatible = "qcom,kalama-mtp", "qcom,kalama", "qcom,mtp";
+    qcom,board-id = <0x10008 0>;
+    qcom,pmic-id = <0x0 0x0 0x0 0x0>;
+
+    chosen {
+        bootargs = "console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x994000,115200n8 loglevel=8";
+    };
+
+    reserved-memory {
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+
+        ramoops@b0000000 {
+            compatible = "ramoops";
+            reg = <0 0xb0000000 0 0x00400000>;
+            record-size = <0x40000>;
+            console-size = <0x40000>;
+            ftrace-size = <0x40000>;
+            pmsg-size = <0x200000>;
+            ecc-size = <0x0>;
+        };
+    };
+};
+
+&soc {
+    fingerprint: fingerprint {
+        compatible = "oneplus,fingerprint";
+        interrupt-parent = <&tlmm>;
+        interrupts = <83 0>;
+        fp-gpio-reset = <&tlmm 84 0>;
+        fp-gpio-irq = <&tlmm 83 0>;
+        fp-gpio-power = <&tlmm 85 0>;
+        status = "ok";
+    };
+
+    touchscreen: touchscreen {
+        compatible = "oneplus,touchscreen";
+        interrupt-parent = <&tlmm>;
+        interrupts = <81 0>;
+        touch-gpio-reset = <&tlmm 82 0>;
+        touch-gpio-irq = <&tlmm 81 0>;
+        status = "ok";
+    };
+
+    vibrator: vibrator {
+        compatible = "oneplus,vibrator";
+        vibrator-gpio = <&tlmm 86 0>;
+        status = "ok";
+    };
+};
+
+&qupv3_se4_i2c {
+    status = "ok";
+    nfc@28 {
+        compatible = "nxp,pn544";
+        reg = <0x28>;
+        nxp,pn544-irq = <&tlmm 87 0>;
+        nxp,pn544-ven = <&tlmm 88 0>;
+        nxp,pn544-fw-dwnld = <&tlmm 89 0>;
+        interrupt-parent = <&tlmm>;
+        interrupts = <87 0>;
+        interrupt-names = "nfc_irq";
+        pinctrl-names = "nfc_active", "nfc_suspend";
+        pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
+        pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
+    };
+};
+
+&tlmm {
+    nfc_int_active: nfc_int_active {
+        mux {
+            pins = "gpio87";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio87";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    nfc_int_suspend: nfc_int_suspend {
+        mux {
+            pins = "gpio87";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio87";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    nfc_enable_active: nfc_enable_active {
+        mux {
+            pins = "gpio88";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio88";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    nfc_enable_suspend: nfc_enable_suspend {
+        mux {
+            pins = "gpio88";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio88";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+}; 
