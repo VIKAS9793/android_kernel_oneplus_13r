@@ -6,9 +6,18 @@ This repository contains the kernel source code for the OnePlus 13R, optimized f
 
 - **Device**: OnePlus 13R
 - **Manufacturer**: OnePlus
-- **Chipset**: Qualcomm Snapdragon 8 Gen 2
-- **Android Version**: 15.0.0.0
-- **Kernel Version**: 5.15.x
+- **Chipset**: Qualcomm Snapdragon 8 Gen 3
+- **CPU**: Qualcomm® Kryo™ 980 CPU @3.3GHz
+- **GPU**: Adreno™ 750 @903MHz
+- **Memory**: 12GB/16GB LPDDR5X
+- **Storage**: 256GB/512GB UFS 4.0
+- **Android Version**: 15.0.0.0 (OxygenOS 15.0)
+- **Kernel Version**: 5.15.74
+- **Display**: 6.78" 2780×1264 pixels, 120Hz LTPO 4.1
+- **Battery**: 6,000 mAh with 80W SUPERVOOC™
+- **Cameras**: 
+  - Rear: 50MP (main) + 50MP (telephoto) + 8MP (ultrawide)
+  - Front: 16MP
 
 ## Features
 
