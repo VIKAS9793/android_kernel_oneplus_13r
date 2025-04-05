@@ -18,12 +18,13 @@ modules.builtin
 *.bz2
 *.lzma
 *.xz
-*.lz4
 *.lzo
 *.patch
 *.gcno
 *.ll
-modules.builtin.modinfo
+modules.builtin
+Module.symvers
+modules.order
 
 # Git files
 *.orig
@@ -31,15 +32,40 @@ modules.builtin.modinfo
 *~
 \#*#
 
-# Kbuild files
-.config
-.config.old
-.version
-.tmp_versions/
-modules.order
-.cache.mk
-.check
-.tmp_*
+# Kernel specific
+vmlinux
+vmlinux.32
+vmlinux-gdb.py
+System.map
+Module.markers
+modules.builtin.modinfo
+
+# Build directory
+/out/
+/output/
+
+# Device specific directories that should not be in kernel tree
+/android_device_oneplus_sm8650-common/
+/device/
+/hardware/
+/kernel/
+/vendor/
+
+# Editor specific
+*.swp
+*.swo
+*~
+
+# Toolchain
+/gcc*/
+/clang*/
+
+# Build artifacts
+*.dtb
+*.dtbo
+Image
+Image.gz
+Image.gz-dtb
 
 # Generated include files
 include/config/
@@ -78,10 +104,6 @@ debian/
 .DS_Store
 *~
 \#*\#
-
-# Build artifacts
-out/
-output/
 
 # Editor/IDE specific
 .vscode/
