@@ -1,0 +1,77 @@
+# SPDX-License-Identifier: GPL-2.0-only
+#
+# Copyright (C) 2024 OnePlus, Inc.
+# Author: VIKAS9793 <vikassahani17@gmail.com>
+#
+
+config ONEPLUS_13R
+	bool "OnePlus 13R"
+	depends on ARCH_KALAMA
+	help
+	  Support for the OnePlus 13R smartphone.
+
+config MACH_ONEPLUS_13R
+	bool "OnePlus 13R board"
+	depends on ONEPLUS_13R
+	help
+	  Support for the OnePlus 13R board.
+
+config ONEPLUS_FINGERPRINT
+	bool "OnePlus Fingerprint"
+	depends on ONEPLUS_13R
+	help
+	  Support for OnePlus fingerprint sensor.
+
+config ONEPLUS_FINGERPRINT_GOODIX
+	bool "Goodix Fingerprint"
+	depends on ONEPLUS_FINGERPRINT
+	help
+	  Support for Goodix fingerprint sensor on OnePlus devices.
+
+config ONEPLUS_FINGERPRINT_ENABLE_DRIVER
+	bool "Enable OnePlus Fingerprint Driver"
+	depends on ONEPLUS_FINGERPRINT
+	help
+	  Enable the OnePlus fingerprint driver.
+
+config ONEPLUS_TRI_STATE_KEY
+	bool "OnePlus Alert Slider"
+	depends on ONEPLUS_13R
+	help
+	  Support for OnePlus Alert Slider (Tri-state key).
+
+config ONEPLUS_FASTCHG
+	bool "OnePlus SUPERVOOC Fast Charging"
+	depends on ONEPLUS_13R
+	help
+	  Support for OnePlus SUPERVOOC fast charging.
+
+config TOUCHSCREEN_ONEPLUS
+	bool "OnePlus Touchscreen"
+	depends on ONEPLUS_13R
+	help
+	  Support for OnePlus touchscreen.
+
+config TOUCHSCREEN_GOODIX_GTX8
+	bool "Goodix GTX8 Touchscreen"
+	depends on TOUCHSCREEN_ONEPLUS
+	help
+	  Support for Goodix GTX8 touchscreen on OnePlus devices.
+
+config TOUCHSCREEN_GOODIX_GTX8_UPDATE
+	bool "Goodix GTX8 Firmware Update"
+	depends on TOUCHSCREEN_GOODIX_GTX8
+	help
+	  Support for Goodix GTX8 touchscreen firmware update.
+
+config TOUCHSCREEN_GOODIX_GTX8_GESTURE
+	bool "Goodix GTX8 Gesture Support"
+	depends on TOUCHSCREEN_GOODIX_GTX8
+	help
+	  Support for Goodix GTX8 touchscreen gestures.
+
+config TOUCHSCREEN_GOODIX_GTX8_TOOLS
+	bool "Goodix GTX8 Tools"
+	depends on TOUCHSCREEN_GOODIX_GTX8
+	help
+	  Support for Goodix GTX8 touchscreen debugging tools. 

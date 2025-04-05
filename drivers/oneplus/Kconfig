@@ -1,0 +1,72 @@
+# OnePlus specific drivers configuration
+
+menuconfig ONEPLUS_DRIVERS
+	bool "OnePlus device drivers"
+	default y
+	help
+	  Say Y here to enable OnePlus device drivers.
+	  This includes device-specific drivers for OnePlus smartphones.
+	  If unsure, say Y.
+
+if ONEPLUS_DRIVERS
+
+config ONEPLUS_TRI_STATE_KEY
+	tristate "OnePlus Alert Slider support"
+	depends on GPIOLIB && INPUT
+	default y
+	help
+	  Say Y here if you want to enable support for the OnePlus Alert Slider.
+	  The Alert Slider is a three-position switch that allows users to
+	  quickly change between different notification modes.
+
+	  To compile this driver as a module, choose M here.
+	  If unsure, say Y.
+
+config ONEPLUS_FASTCHARGE
+	tristate "OnePlus SUPERVOOC fast charging support"
+	depends on POWER_SUPPLY
+	default y
+	help
+	  Say Y here if you want to enable support for OnePlus SUPERVOOC fast charging.
+	  This enables high-speed charging up to 6A with intelligent voltage and
+	  temperature monitoring.
+
+	  To compile this driver as a module, choose M here.
+	  If unsure, say Y.
+
+config ONEPLUS_FINGERPRINT
+	tristate "OnePlus Goodix fingerprint sensor support"
+	depends on SPI && INPUT
+	default y
+	help
+	  Say Y here if you want to enable support for the Goodix fingerprint sensor
+	  on OnePlus devices. This driver supports fingerprint detection and
+	  navigation events.
+
+	  To compile this driver as a module, choose M here.
+	  If unsure, say Y.
+
+config ONEPLUS_DISPLAY_FEATURE
+    tristate "OnePlus display features"
+    depends on DRM_MSM
+    default y
+    help
+      Say Y here to enable OnePlus-specific display features like
+      DC dimming, HBM, and MEMC.
+
+config ONEPLUS_MOTOR
+    tristate "OnePlus motor control"
+    depends on INPUT
+    default y
+    help
+      Say Y here to enable support for the motor control system
+      used in OnePlus devices.
+
+config ONEPLUS_WIRELESS_CHARGE
+    tristate "OnePlus wireless charging support"
+    depends on POWER_SUPPLY
+    default y
+    help
+      Say Y here to enable support for OnePlus wireless charging features.
+
+endif # ONEPLUS_DRIVERS 

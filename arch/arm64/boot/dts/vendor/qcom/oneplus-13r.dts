@@ -1,0 +1,193 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (C) 2024 OnePlus, Inc.
+ * Author: VIKAS9793 <vikassahani17@gmail.com>
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "kalama.dtsi"
+#include "kalama-mtp.dtsi"
+
+/ {
+    model = "Qualcomm Technologies, Inc. Kalama MTP + OnePlus 13R";
+    compatible = "qcom,kalama-mtp", "qcom,kalama", "qcom,mtp";
+    qcom,msm-id = <519 0x10000>;
+    qcom,board-id = <0x10008 0>;
+
+    chosen {
+        bootargs = "kpti=off";
+    };
+};
+
+&soc {
+    oneplus_display {
+        compatible = "oneplus,dsi-display";
+        status = "okay";
+
+        qcom,dsi-display-primary {
+            qcom,display-type = "primary";
+            qcom,dsi-display-active;
+            qcom,display-mode = "split";
+            qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
+            qcom,mdss-dsi-panel-peak-brightness = <4500000>;
+            qcom,mdss-dsi-panel-blackness-level = <3>;
+            qcom,mdss-dsi-panel-hdr-enabled;
+            qcom,mdss-dsi-panel-hdr10-plus-enabled;
+            qcom,mdss-dsi-panel-wide-color-enabled;
+            qcom,mdss-dsi-panel-10bit-enabled;
+        };
+    };
+
+    oneplus_13r: oneplus-13r {
+        compatible = "oneplus,13r";
+        status = "okay";
+
+        vdd-supply = <&pm8550_l12>;
+    };
+
+    goodix_fp {
+        compatible = "goodix,fingerprint";
+        status = "okay";
+
+        interrupt-parent = <&tlmm>;
+        interrupts = <40 0x0>;
+        fp-gpio-irq = <&tlmm 40 0x00>;
+        fp-gpio-reset = <&tlmm 41 0x00>;
+        fp-gpio-enable = <&tlmm 42 0x00>;
+
+        pinctrl-names = "fp_active", "fp_suspend";
+        pinctrl-0 = <&fp_active>;
+        pinctrl-1 = <&fp_suspend>;
+    };
+
+    tri_state_key {
+        compatible = "oneplus,tri-state-key";
+        status = "okay";
+
+        interrupt-parent = <&tlmm>;
+        interrupts = <32 0x0>;
+        tristate,gpio_key1 = <&tlmm 32 0x00>;
+        tristate,gpio_key2 = <&tlmm 33 0x00>;
+        tristate,gpio_key3 = <&tlmm 34 0x00>;
+
+        pinctrl-names = "tristate_active", "tristate_suspend";
+        pinctrl-0 = <&tri_state_key_active>;
+        pinctrl-1 = <&tri_state_key_suspend>;
+    };
+
+    oplus_chg {
+        compatible = "oplus,sm8650-charger";
+        status = "okay";
+
+        oplus,chg_ops = "plat-pmic";
+        qcom,vooc_strategy_name = "vooc_strategy_30w";
+        qcom,input_current_charger_ma = <2000>;
+        qcom,pd_input_current_charger_ma = <2000>;
+        qcom,qc_input_current_charger_ma = <2000>;
+        qcom,input_current_usb_ma = <500>;
+        qcom,input_current_cdp_ma = <1500>;
+        qcom,input_current_led_ma = <1200>;
+        qcom,input_current_led_ma_high = <1200>;
+        qcom,input_current_led_ma_warm = <1500>;
+        qcom,input_current_led_ma_normal = <2000>;
+        qcom,led_warm_bat_decidegc = <350>;
+        qcom,led_high_bat_decidegc = <370>;
+        qcom,input_current_camera_ma = <1200>;
+        qcom,input_current_calling_ma = <1500>;
+        qcom,qc_temp_cool_decidegc = <150>;
+        qcom,qc_temp_normal_decidegc = <350>;
+        qcom,qc_temp_warm_decidegc = <370>;
+        qcom,qc_temp_hot_decidegc = <440>;
+
+        pinctrl-names = "default";
+        pinctrl-0 = <&charging_inter_active &charging_switch1_active>;
+    };
+
+    oreality_audio {
+        compatible = "oneplus,oreality-audio";
+        status = "okay";
+
+        qcom,num-mics = <3>;
+        qcom,audio-codec = "wcd938x";
+        qcom,wsa-codec = "wsa883x";
+    };
+};
+
+&tlmm {
+    /* Fingerprint */
+    fp_active: fp_active {
+        mux {
+            pins = "gpio40", "gpio41", "gpio42";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio40", "gpio41", "gpio42";
+            drive-strength = <6>;
+            bias-pull-up;
+        };
+    };
+
+    fp_suspend: fp_suspend {
+        mux {
+            pins = "gpio40", "gpio41", "gpio42";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio40", "gpio41", "gpio42";
+            drive-strength = <2>;
+            bias-pull-down;
+        };
+    };
+
+    /* Alert Slider */
+    tri_state_key_active: tri_state_key_active {
+        mux {
+            pins = "gpio32", "gpio33", "gpio34";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio32", "gpio33", "gpio34";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    tri_state_key_suspend: tri_state_key_suspend {
+        mux {
+            pins = "gpio32", "gpio33", "gpio34";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio32", "gpio33", "gpio34";
+            drive-strength = <2>;
+            bias-pull-down;
+        };
+    };
+
+    /* Charging */
+    charging_inter_active: charging_inter_active {
+        mux {
+            pins = "gpio55";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio55";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    charging_switch1_active: charging_switch1_active {
+        mux {
+            pins = "gpio56";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio56";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+}; 

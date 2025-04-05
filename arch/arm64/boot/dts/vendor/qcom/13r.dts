@@ -1,0 +1,73 @@
+/dts-v1/;
+
+#include "sm8650.dtsi"
+
+/ {
+    model = "OnePlus 13R";
+    compatible = "oneplus,13r", "qcom,sm8650";
+
+    chosen {
+        bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off";
+    };
+
+    reserved-memory {
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+
+        ramoops_mem: ramoops@0x9ff00000 {
+            compatible = "ramoops";
+            reg = <0x0 0x9ff00000 0x0 0x100000>;
+            record-size = <0x20000>;
+            console-size = <0x40000>;
+            ftrace-size = <0x20000>;
+            pmsg-size = <0x20000>;
+        };
+    };
+};
+
+&mdss_mdp {
+    qcom,mdss-highest-bank-bit = <0x3>;
+    qcom,sde-mixer-display-pref = "primary", "none", "none";
+};
+
+&pm8550_gpios {
+    disp_pins {
+        disp_pins_default: disp_pins_default {
+            pins = "gpio1";
+            function = "func1";
+            qcom,drive-strength = <2>;
+            power-source = <0>;
+            bias-disable;
+            output-low;
+        };
+    };
+};
+
+&soc {
+    oneplus_fastchg {
+        compatible = "oneplus,fastcg";
+        status = "okay";
+        oneplus,battery-type = "4500mah";
+    };
+
+    goodix_fp {
+        compatible = "goodix,fingerprint";
+        status = "okay";
+        interrupt-parent = <&tlmm>;
+        interrupts = <40 0x0>;
+        goodix,gpio_irq = <&tlmm 40 0x00>;
+        goodix,gpio_reset = <&tlmm 39 0x00>;
+        goodix,gpio_cs = <&tlmm 38 0x00>;
+    };
+
+    tri_state_key {
+        compatible = "oneplus,tri-state-key";
+        status = "okay";
+        interrupt-parent = <&tlmm>;
+        interrupts = <26 0x0>;
+        tristate,gpio_key1 = <&tlmm 26 0x00>;
+        tristate,gpio_key2 = <&tlmm 28 0x00>;
+        tristate,gpio_key3 = <&tlmm 30 0x00>;
+    };
+}; 

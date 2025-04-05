@@ -1,0 +1,36 @@
+/ {
+    supervooc_charger {
+        compatible = "oneplus,supervooc-charger";
+        status = "okay";
+
+        vooc,mcu_reset_gpio = <&tlmm 26 0x00>;
+        vooc,mcu_en_gpio = <&tlmm 27 0x00>;
+        vooc,fw_check_gpio = <&tlmm 28 0x00>;
+
+        pinctrl-names = "default";
+        pinctrl-0 = <&supervooc_pins_default>;
+    };
+};
+
+&tlmm {
+    supervooc_pins_default: supervooc_pins_default {
+        mux {
+            pins = "gpio26", "gpio27", "gpio28";
+            function = "gpio";
+        };
+
+        config {
+            pins = "gpio26", "gpio27";
+            drive-strength = <2>;
+            bias-disable;
+            output-low;
+        };
+
+        config_input {
+            pins = "gpio28";
+            drive-strength = <2>;
+            bias-pull-up;
+            input-enable;
+        };
+    };
+};

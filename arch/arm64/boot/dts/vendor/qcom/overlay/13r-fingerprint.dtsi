@@ -1,0 +1,46 @@
+/ {
+    goodix_fp {
+        compatible = "goodix,fingerprint";
+        status = "okay";
+
+        fp,gpio_irq = <&tlmm 29 0x00>;
+        fp,gpio_reset = <&tlmm 30 0x00>;
+        fp,gpio_power = <&tlmm 31 0x00>;
+
+        pinctrl-names = "default";
+        pinctrl-0 = <&fp_pins_default>;
+
+        spi-max-frequency = <19200000>;
+        spi-qup-id = <1>;
+    };
+};
+
+&tlmm {
+    fp_pins_default: fp_pins_default {
+        mux {
+            pins = "gpio29", "gpio30", "gpio31";
+            function = "gpio";
+        };
+
+        irq_config {
+            pins = "gpio29";
+            drive-strength = <2>;
+            bias-pull-down;
+            input-enable;
+        };
+
+        reset_config {
+            pins = "gpio30";
+            drive-strength = <2>;
+            bias-disable;
+            output-low;
+        };
+
+        power_config {
+            pins = "gpio31";
+            drive-strength = <2>;
+            bias-disable;
+            output-low;
+        };
+    };
+}; 

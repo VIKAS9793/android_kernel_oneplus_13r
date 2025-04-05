@@ -1,0 +1,150 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (c) 2024, The Linux Foundation. All rights reserved.
+ */
+
+&tlmm {
+    fingerprint_int_active: fingerprint_int_active {
+        mux {
+            pins = "gpio83";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio83";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    fingerprint_int_suspend: fingerprint_int_suspend {
+        mux {
+            pins = "gpio83";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio83";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    fingerprint_reset_active: fingerprint_reset_active {
+        mux {
+            pins = "gpio84";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio84";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    fingerprint_reset_suspend: fingerprint_reset_suspend {
+        mux {
+            pins = "gpio84";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio84";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    fingerprint_power_active: fingerprint_power_active {
+        mux {
+            pins = "gpio85";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio85";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    fingerprint_power_suspend: fingerprint_power_suspend {
+        mux {
+            pins = "gpio85";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio85";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    touch_int_active: touch_int_active {
+        mux {
+            pins = "gpio81";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio81";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    touch_int_suspend: touch_int_suspend {
+        mux {
+            pins = "gpio81";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio81";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    touch_reset_active: touch_reset_active {
+        mux {
+            pins = "gpio82";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio82";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    touch_reset_suspend: touch_reset_suspend {
+        mux {
+            pins = "gpio82";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio82";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    vibrator_active: vibrator_active {
+        mux {
+            pins = "gpio86";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio86";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+
+    vibrator_suspend: vibrator_suspend {
+        mux {
+            pins = "gpio86";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio86";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+}; 

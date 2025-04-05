@@ -1,0 +1,121 @@
+# Generated files
+*.o
+*.o.*
+*.a
+*.s
+*.ko
+*.so
+*.so.dbg
+*.mod.c
+*.i
+*.lst
+*.symtypes
+*.order
+modules.builtin
+*.elf
+*.bin
+*.gz
+*.bz2
+*.lzma
+*.xz
+*.lz4
+*.lzo
+*.patch
+*.gcno
+*.ll
+modules.builtin.modinfo
+
+# Git files
+*.orig
+*.rej
+*~
+\#*#
+
+# Kbuild files
+.config
+.config.old
+.version
+.tmp_versions/
+modules.order
+.cache.mk
+.check
+.tmp_*
+
+# Generated include files
+include/config/
+include/generated/
+arch/*/include/generated/
+
+# Kernel binary
+arch/*/boot/Image
+arch/*/boot/Image.gz
+arch/*/boot/Image.gz-dtb
+arch/*/boot/bzImage
+arch/*/boot/uImage
+arch/*/boot/zImage
+arch/*/boot/vmlinux
+vmlinux
+vmlinux.32
+vmlinux-gdb.py
+System.map
+
+# Debian directory
+debian/
+
+# Debugging files
+*.cmd
+.tmp_*
+*.log
+*.dwo
+*.dtb
+*.dtbo
+
+# Dependencies
+*.d
+
+# Misc
+*.swp
+.DS_Store
+*~
+\#*\#
+
+# Build artifacts
+out/
+output/
+
+# Editor/IDE specific
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+
+# Toolchain generated
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Android specific
+*.img
+*.zip
+boot.img
+recovery.img
+ramdisk.img
+ramdisk-recovery.img
+
+# ccache
+.ccache/
+
+# DKMS
+.dkms/
+
+# Clang/LLVM
+.clangd/
+compile_commands.json
+
+# Build system generated
+build.log
+error.log
+make.log
+build_kernel.log 

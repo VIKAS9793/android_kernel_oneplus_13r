@@ -1,0 +1,107 @@
+/ {
+    model = "Qualcomm Technologies, Inc. SM8650";
+    compatible = "qcom,sm8650";
+
+    chosen {
+        bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7";
+    };
+
+    cpus {
+        #address-cells = <2>;
+        #size-cells = <0>;
+
+        CPU0: cpu@0 {
+            device_type = "cpu";
+            compatible = "qcom,kryo-gold";
+            reg = <0x0 0x0>;
+            enable-method = "psci";
+            capacity-dmips-mhz = <1024>;
+            next-level-cache = <&L2_0>;
+            L2_0: l2-cache {
+                compatible = "arm,arch-cache";
+                cache-level = <2>;
+            };
+        };
+
+        // ... Additional CPU definitions ...
+    };
+
+    memory {
+        device_type = "memory";
+        reg = <0x0 0x80000000 0x0 0x80000000>;
+    };
+
+    soc: soc { };
+};
+
+&soc {
+    #address-cells = <1>;
+    #size-cells = <1>;
+    ranges = <0 0 0 0xffffffff>;
+    compatible = "simple-bus";
+
+    // Clock controller
+    gcc: clock-controller@100000 {
+        compatible = "qcom,gcc-sm8650";
+        reg = <0x100000 0x1f0000>;
+        #clock-cells = <1>;
+        #reset-cells = <1>;
+    };
+
+    // UART
+    uart_console: serial@a90000 {
+        compatible = "qcom,msm-uartdm-v1.4";
+        reg = <0xa90000 0x1000>;
+        interrupts = <0 26 0>;
+        clock-names = "core", "iface";
+        clocks = <&gcc 7>,
+                 <&gcc 8>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&uart_console_active>;
+        status = "okay";
+    };
+
+    // Display
+    mdss_mdp: mdss_mdp@ae00000 {
+        compatible = "qcom,sm8650-mdss-mdp";
+        reg = <0xae00000 0x1000>;
+        reg-names = "mdp_phys";
+        interrupts = <0 83 0>;
+        clocks = <&gcc 10>,
+                 <&gcc 11>,
+                 <&gcc 12>;
+        clock-names = "core", "iface", "bus";
+        status = "okay";
+    };
+
+    // Camera
+    camera_vfe: qcom,vfe@acb4000 {
+        cell-index = <0>;
+        compatible = "qcom,vfe";
+        reg = <0xacb4000 0x4000>;
+        interrupts = <0 57 0>;
+        clocks = <&gcc 15>,
+                 <&gcc 16>,
+                 <&gcc 17>;
+        clock-names = "core", "iface", "bus";
+        status = "okay";
+    };
+};
+
+// Power Management
+&spmi_bus {
+    pmic@0 {
+        compatible = "qcom,pm8550", "qcom,spmi-pmic";
+        reg = <0x0 0>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        pm8550_gpios: gpio@c000 {
+            compatible = "qcom,pm8550-gpio";
+            reg = <0xc000>;
+            gpio-controller;
+            #gpio-cells = <2>;
+            interrupts = <0 0x0 0 0>;
+        };
+    };
+}; 

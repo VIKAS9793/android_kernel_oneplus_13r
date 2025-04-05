@@ -1,0 +1,28 @@
+/ {
+    tri_state_key {
+        compatible = "oneplus,tri-state-key";
+        status = "okay";
+
+        tristate,gpio_key1 = <&tlmm 23 0x00>;  // Ring
+        tristate,gpio_key2 = <&tlmm 24 0x00>;  // Vibrate
+        tristate,gpio_key3 = <&tlmm 25 0x00>;  // Silent
+
+        pinctrl-names = "default";
+        pinctrl-0 = <&tri_state_key_default>;
+    };
+};
+
+&tlmm {
+    tri_state_key_default: tri_state_key_default {
+        mux {
+            pins = "gpio23", "gpio24", "gpio25";
+            function = "gpio";
+        };
+
+        config {
+            pins = "gpio23", "gpio24", "gpio25";
+            drive-strength = <2>;
+            bias-pull-up;
+        };
+    };
+}; 

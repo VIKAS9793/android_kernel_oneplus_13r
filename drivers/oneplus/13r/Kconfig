@@ -1,0 +1,67 @@
+# OnePlus 13R specific drivers
+
+config ONEPLUS_13R
+    bool "OnePlus 13R specific drivers"
+    default y
+    help
+      Enable OnePlus 13R specific drivers
+
+config ONEPLUS_13R_FINGERPRINT
+    bool "OnePlus 13R Fingerprint driver"
+    default y
+    help
+      Enable OnePlus 13R fingerprint driver
+
+config ONEPLUS_13R_TOUCHSCREEN
+    bool "OnePlus 13R Touchscreen driver"
+    default y
+    help
+      Enable OnePlus 13R touchscreen driver
+
+config ONEPLUS_13R_DISPLAY
+    bool "OnePlus 13R Display driver"
+    default y
+    help
+      Enable OnePlus 13R display driver
+
+config ONEPLUS_13R_CAMERA
+    bool "OnePlus 13R Camera driver"
+    default y
+    help
+      Enable OnePlus 13R camera driver
+
+config ONEPLUS_13R_BATTERY
+    bool "OnePlus 13R Battery driver"
+    default y
+    help
+      Enable OnePlus 13R battery driver
+
+config ONEPLUS_13R_CHARGER
+    bool "OnePlus 13R Charger driver"
+    default y
+    help
+      Enable OnePlus 13R charger driver
+
+config ONEPLUS_13R_VIBRATOR
+    bool "OnePlus 13R Vibrator driver"
+    default y
+    help
+      Enable OnePlus 13R vibrator driver
+
+config ONEPLUS_13R_SENSORS
+    bool "OnePlus 13R Sensors driver"
+    default y
+    help
+      Enable OnePlus 13R sensors driver
+
+config ONEPLUS_13R_AUDIO
+    bool "OnePlus 13R Audio driver"
+    default y
+    help
+      Enable OnePlus 13R audio driver
+
+config ONEPLUS_13R_NFC
+    bool "OnePlus 13R NFC driver"
+    default y
+    help
+      Enable OnePlus 13R NFC driver 
