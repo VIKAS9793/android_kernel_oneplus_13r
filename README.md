@@ -4,75 +4,26 @@ Linux kernel source code for the OnePlus 13R (CPH2691) device.
 
 ## Device Specifications
 
-* **Dimensions**: 161.7 x 75.8 x 8.0 mm, 206g
-* **SoC**: Qualcomm SM8650 (Snapdragon® 8 Gen 3)
-* **CPU**: 
-  * Qualcomm® Kryo™ 980 CPU @3.3GHz
-  * 1x Prime + 3x Performance + 4x Efficiency cores
-* **GPU**: Adreno™ 750 @903MHz
-* **Memory**: 12GB/16GB LPDDR5X
-* **Storage**: 256GB/512GB UFS 4.0
-* **Display**: 
-  * 6.78" (17.22 cm) 120Hz ProXDR Display with LTPO 4.1
-  * Resolution: 2780 x 1264 pixels, 450 ppi
-  * Aspect Ratio: 19.8:9
-  * Peak Brightness: 4500 nits (HBM: 1600 nits)
-  * 100% Display P3, 10-bit Color Depth
-  * Cover Glass: Corning® Gorilla® Glass GG7i
-* **Battery**: 6,000 mAh (single-cell) with 80W SUPERVOOC™
-* **Camera**:
-  * Main: 50MP Sony LYT-700 (f/1.8, OIS+EIS)
-    * Sensor Size: 1/1.56"
-    * Pixel Size: 1.0 µm
-    * FOV: 84°
-  * Telephoto: 50MP S5KJN5 (f/2.0, 2X optical zoom)
-    * Sensor Size: 1/2.75"
-    * Pixel Size: 0.64 µm
-  * Ultra-wide: 8MP (f/2.2, 112° FoV)
-    * Sensor Size: 1/4"
-    * Pixel Size: 1.12 µm
-  * Front: 16MP (f/2.4)
-    * Sensor Size: 1/3.09"
-    * FOV: 82°
-* **Video Capabilities**:
-  * 4K@60fps/30fps
-  * 1080P@60fps/30fps
-  * SLO-MO: 1080P@240fps, 720P@480fps
-  * Movie Mode: 3840x1644@30fps
-* **Connectivity**:
-  * 2G GSM: 850/900/1800MHz
-  * 3G WCDMA: Bands 1/4/5/8
-  * 4G LTE FDD: Bands 1/3/4/5/8/28
-  * 4G LTE TDD: Bands 38/39/40/41
-  * 5G NR: n1/n3/n5/n8/n28/n40/n41/n77/n78
-  * Wi-Fi 7, 2×2 MIMO, 8 Spatial-stream sounding MU-MIMO
-  * Bluetooth 5.4 with aptX, aptX-HD, LDAC, LHDC 5.0
-  * NFC
-  * GPS(L1+L5), GLONASS(G1), BDS(B1I+B1C+B2a), Galileo(E1+E5a), QZSS(L1+L5), NavIC(L5)
-* **Sensors**:
-  * In-display optical fingerprint sensor
-  * Proximity sensor
-  * Ambient light sensor
-  * Color temperature sensor
-  * E-compass
-  * Accelerometer
-  * Gyroscope
-  * Hall Sensor
-  * Infrared remote control
-* **Ports & Buttons**:
-  * USB Type-C (USB 2.0)
-  * Dual nano-SIM slot
-  * Alert Slider
-* **Audio**:
-  * OReality Audio
-  * 3 mics
-  * Support standard Type-C earphones
-* **Multimedia Support**:
-  * HDR: Dolby Vision®, HDR10+, HDRViVid
-  * Audio: MP3, AAC, AMR, APE, OGG, FLAC, WAV, MIDI
-  * Video: MP4, 3GP, MKV, MOV, HEVC, AVC, VP9, VP8, AV1
-  * Image: JPEG, BMP, PNG, DNG, HEIF, AVIF, WEBP, GIF, WBMP, ICO
-* **OS**: OxygenOS 15.0 based on Android™ 15
+| Feature                 | Specification                                                                   |
+| ----------------------- | ------------------------------------------------------------------------------- |
+| CPU                     | Qualcomm® Kryo™ 980 CPU @3.3GHz                                               |
+| Chipset                 | Snapdragon® 8 Gen 3 Mobile Platform                                            |
+| GPU                     | Adreno™ 750 @903MHz                                                            |
+| Memory                  | 12GB/16GB LPDDR5X                                                              |
+| Shipped Android Version | OxygenOS 15.0 based on Android™ 15                                             |
+| Storage                 | 256GB/512GB UFS 4.0                                                            |
+| Battery                 | 6,000 mAh (single-cell, non-removable)                                         |
+| Display                 | 17.22 cm (6.78 inches), 2780×1264 pixels, 450 ppi, 120Hz ProXDR Display with LTPO 4.1, HBM/Peak Brightness: 1600 nits/4500 nits, 100% Display P3, 10-bit Color Depth, Corning® Gorilla® Glass GG7i |
+| Camera (Rear)           | 50 MP (wide), Sony LYT-700, 1/1.56", f/1.8, OIS + 50 MP (telephoto), 2X optical zoom, f/2.0 + 8 MP (ultrawide), f/2.2, 112° FOV |
+| Camera (Front)          | 16 MP (wide), 1/3.09", f/2.4, 82° FOV                                         |
+| Charging                | 80W SUPERVOOC™                                                                 |
+| Dimensions             | Height: 16.17 cm, Width: 7.58 cm, Thickness: 0.80 cm                           |
+| Weight                 | 206g                                                                            |
+| Sensors                | Proximity sensor, Ambient light sensor, Color temperature sensor, E-compass, Accelerometer, Gyroscope, In-display optical fingerprint sensor, Hall Sensor, Infrared remote control |
+| Connectivity           | 2G GSM: 850/900/1800MHz, GPS(L1+L5), GLONASS(G1), BDS(B1I+B1C+B2a), Galileo(E1+E5a), QZSS(L1+L5), NavIC(L5) |
+| Ports                  | USB Type-C (USB 2.0), Dual nano-SIM slot                                        |
+| Audio                  | OReality Audio, 3 mics, Support standard Type-C earphones                       |
+| Multimedia             | HDR: Dolby Vision®, HDR10+, HDRViVid                                           |
 
 ## Features
 
